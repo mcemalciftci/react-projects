@@ -8,7 +8,7 @@ export const Header = () => {
         {/* <div className="w-full bg-white  " >sadsad</div> */}
         <div className="w-full flex   bg-slate-400  items-center p-2 justify-between ">
           <div className="bg-black">
-            <span>Logo</span>
+            <span>Cemal</span>
           </div>
           <div className="flex  items-center ">
             <CiMenuBurger />
