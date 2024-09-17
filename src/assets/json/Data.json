@@ -1,0 +1,63 @@
+[
+    {
+      "img": "https://picsum.photos/300/200",
+      "title": "Wireless Headphones",
+      "description": "High-quality wireless headphones with noise cancellation.",
+      "price": 99.99
+    },
+    {
+      "img": "https://picsum.photos/300/200",
+      "title": "Smartwatch",
+      "description": "Stylish smartwatch with fitness tracking and notifications.",
+      "price": 149.99
+    },
+    {
+      "img": "https://picsum.photos/300/200",
+      "title": "Laptop Stand",
+      "description": "Ergonomic laptop stand for improved posture and comfort.",
+      "price": 29.99
+    },
+    {
+      "img": "https://picsum.photos/300/200",
+      "title": "Bluetooth Speaker",
+      "description": "Portable Bluetooth speaker with powerful sound and long battery life.",
+      "price": 59.99
+    },
+    {
+      "img": "https://picsum.photos/300/200",
+      "title": "Gaming Mouse",
+      "description": "High-precision gaming mouse with customizable RGB lighting.",
+      "price": 49.99
+    },
+    {
+      "img": "https://picsum.photos/300/200",
+      "title": "4K Monitor",
+      "description": "27-inch 4K monitor with stunning color accuracy and wide viewing angles.",
+      "price": 299.99
+    },
+    {
+      "img": "https://picsum.photos/300/200",
+      "title": "External SSD",
+      "description": "Portable external SSD with fast data transfer speeds.",
+      "price": 89.99
+    },
+    {
+      "img": "https://picsum.photos/300/200",
+      "title": "Mechanical Keyboard",
+      "description": "Mechanical keyboard with tactile switches for an enhanced typing experience.",
+      "price": 79.99
+    },
+    {
+      "img": "https://picsum.photos/300/200",
+      "title": "Noise Cancelling Earbuds",
+      "description": "Compact earbuds with advanced noise cancelling technology.",
+      "price": 129.99
+    },
+    {
+      "img": "https://picsum.photos/300/200",
+      "title": "Fitness Tracker",
+      "description": "Water-resistant fitness tracker with heart rate monitor and step tracking.",
+      "price": 39.99
+    }
+  ]
+  
