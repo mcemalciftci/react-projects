@@ -1,13 +1,13 @@
 
 import { Route, Routes } from 'react-router';
 import './App.css';
-import { Header } from './companents/Header';
 import { Layout } from './pages/Layout';
 
 function App() {
   return (
    <Routes>
       <Route element={<Layout />} path='/'>
+
       </Route>
    </Routes> 
   )

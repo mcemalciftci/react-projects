@@ -1,8 +1,7 @@
-import { CiHeart, CiMenuBurger, CiSearch, CiUser } from "react-icons/ci";
+import { CiHeart, CiSearch, CiUser } from "react-icons/ci";
 import { FiShoppingCart } from "react-icons/fi";
 import Logo from "../assets/images/Logo.jpg";
 import { useState } from "react";
-import { FaClosedCaptioning } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
 
 export const Header = () => {
