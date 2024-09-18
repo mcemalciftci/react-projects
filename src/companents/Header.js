@@ -74,7 +74,7 @@ export const Header = () => {
               </div>
               <div className="flex flex-col ">
                 <h1 className="font-bold text-3xl uppercase pl-4  select-none">
-                  
+                  Glamouria
                 </h1>
                 <h1 className="text-xs text-end select-none ">
                   Bir Sunay Kuruluşudur.
