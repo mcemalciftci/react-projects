@@ -7,13 +7,27 @@ import {
   CardTitle,
 } from "reactstrap";
 import Data from "../assets/json/Data.json";
+import { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { ProductActions } from "../store/ProductSlice";
+
 export const Cart = () => {
+  const items = useSelector(state=>state.product.items)
+  console.log(items)
+  
+  const dispatch = useDispatch()
+  const [hover,setHover] = useState(null)
+  const addToCart = (d) =>{
+    dispatch(ProductActions.productAdd(d))
+  }
   return (
-    <div className="md:grid md:grid-cols-3 md:gap-y-4 mb-2 overflow-hidden  grid-cols-2  grid gap-4">
+    <div className="xl:grid xl:grid-cols-4 xl:gap-y-4 mb-2 overflow-hidden  grid-cols-2  grid gap-4">
       {Data.map((d, index) => (
         
           <Card
-            className="  bg-slate-100 rounded-md"
+            // onPointerEnter={()=>{setHover(index)}}
+            // onPointerLeave={()=>{setHover(null)}}
+            className="  bg-slate-100 rounded-md md:w-[17rem] hover:scale-105 duration-700 cursor-pointer"
             key={index}
             style={{
                 
@@ -23,6 +37,10 @@ export const Cart = () => {
                 height: "100%", // Kartların yüksekliği aynı olsun
             }}
           >
+            
+           {/* {hover===index&& <div key={hover}  className="w-[17rem] h-full opacity-20 fixed text-center items-center duration-700 bg-black">
+                <button className="bg-white absolute p-2 top-52 rounded-md   text-black">Göz At</button>
+           </div>} */}
             <img alt="Sample" className="object-cover h-full" src={d.img} />
             <CardBody className=" px-1 flex flex-col justify-between ">
               <CardTitle className="font-bold" tag="h5"> {d.title}</CardTitle>
@@ -33,7 +51,7 @@ export const Cart = () => {
                 <CardText className="font-semibold text-xs md:text-base">
                     {d.price} ₺
                 </CardText>
-                <button  className="bg-blue-300 md:p-1 p-1.5  rounded-md text-xs md:text-base " >Sepete Ekle</button>
+                <button onClick={()=>{addToCart(d)}}  className="bg-blue-300 md:p-1 p-1.5  rounded-md text-xs md:text-base " >Sepete Ekle</button>
 
               </div>
             </CardBody>
