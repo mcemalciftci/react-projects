@@ -13,7 +13,7 @@ import { ProductActions } from "../store/ProductSlice";
 
 export const Cart = () => {
   const items = useSelector(state=>state.product.items)
-  console.log(items)
+ 
   
   const dispatch = useDispatch()
   const [hover,setHover] = useState(null)
@@ -27,7 +27,7 @@ export const Cart = () => {
           <Card
             // onPointerEnter={()=>{setHover(index)}}
             // onPointerLeave={()=>{setHover(null)}}
-            className="  bg-slate-100 rounded-md md:w-[17rem] hover:scale-105 duration-700 cursor-pointer"
+            className="  bg-slate-100 rounded-md md:w-[15rem] hover:scale-105 duration-700 cursor-pointer"
             key={index}
             style={{
                 

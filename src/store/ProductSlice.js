@@ -6,7 +6,7 @@ const initialState = {
 
 }
 const ProductSlice = createSlice({
-    name:"prduct",
+    name:"product",
     initialState,
     reducers:{
         productAdd (state,action) {
@@ -15,15 +15,16 @@ const ProductSlice = createSlice({
           if(!existingItem){
 
               state.items.push({...newItem,quantity:1})
-          }else{
-            existingItem.quantity ++
-            state.totalPrice =+ newItem.price
-        }
-        // state.totalPrice=state.items.reduce((acc,item)=>
-        //   acc += item?.price
-         
-        // )
-        //   console.log(state.totalPrice)
+            }else{
+                existingItem.quantity ++
+            }
+            const toplamFiyat = state.items.reduce((toplam, item) => {
+                toplam += (item?.price || 0) * (item?.quantity || 1);
+                return toplam;
+            }, 0);
+        
+            state.totalPrice=toplamFiyat  
+          
         }
     }
 

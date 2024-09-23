@@ -31,17 +31,17 @@ export const Header = () => {
   ];
   return (
     <div className=" overflow-hidden">
-      {open && (
+      {/* {open && (
         <div
           className="bg-black fixed h-full w-full opacity-20 "
           onClick={() => {
             setOpen(false);
           }}
         ></div>
-      )}
+      )} */}
        <Sepet open={open} setOpen={setOpen}  menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
 
-      {menuOpen&&<div onClick={()=>{setMenuOpen(false)}} className=" md:hidden w-full h-full fixed bg-black opacity-20"></div>}
+      
       <div className=" m-1 p-2 shadow-md rounded-md">
         <div className="h-24  space-y-4 ">
           {/* <div className="w-full bg-white  " >sadsad</div> */}
