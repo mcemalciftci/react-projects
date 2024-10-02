@@ -3,7 +3,6 @@ import { IoMdClose } from "react-icons/io";
 import { PiShoppingCartLight } from "react-icons/pi";
 import Logo from "../assets/images/Logo.jpg";
 import { useDispatch, useSelector } from "react-redux";
-import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Minus } from "lucide-react"
 import { Button, Card, CardBody, CardImg, CardText, CardTitle } from "reactstrap";
 import { ProductActions } from "../store/ProductSlice";

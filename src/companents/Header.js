@@ -30,7 +30,7 @@ export const Header = () => {
     },
   ];
   return (
-    <div className=" overflow-hidden">
+    <div className=" overflow-hidden sticky top-0 bg-white  ">
       {/* {open && (
         <div
           className="bg-black fixed h-full w-full opacity-20 "
@@ -42,19 +42,17 @@ export const Header = () => {
        <Sepet open={open} setOpen={setOpen}  menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
 
       
-      <div className=" m-1 p-2 shadow-md rounded-md  ">
-        <div className=" space-y-4  ">
-          {/* <div className="w-full bg-white  " >sadsad</div> */}
-          <div className="w-full flex items-center p-2 md:justify-evenly justify-between  ">
-            <div className="flex items-center cursor-pointer w-auto">
-              <div className="h-20 w-20 bg-black flex items-center">
+      <div className=" m-1 p-1 shadow-md rounded-md  ">
+          <div className="w-full flex items-center p-1.5 md:justify-between justify-evenly  ">
+            <div className="flex items-center cursor-pointer w-auto pl-8">
+              <div className="h-12 w-12 bg-black flex items-center">
                 <img className="object-cover" src={Logo} alt="Glamouria" />
               </div>
               <div className="flex flex-col ">
-                <h1 className="font-bold text-3xl uppercase pl-4  select-none">
+                <h1 className="font-bold text-2xl uppercase pl-2  select-none">
                   Glamouria
                 </h1>
-                <h1 className="text-xs text-end select-none ">
+                <h1 className="text-[10px] text-end select-none ">
                   Bir Sunay Kuruluşudur.
                 </h1>
               </div>
@@ -71,11 +69,11 @@ export const Header = () => {
                 placeholder="Aradığınız ürün veya kategori yazınız"
                 className="w-full outline-none h-12 p-3 bg-slate-100 rounded-md items-center flex "
               />
-              <CiSearch className="pr-2 size-9" />
+              <CiSearch  className="pr-2 size-9 cursor-pointer" />
             </div>
-            <div className="md:flex hidden w-[28%]  items-center justify-between ">
+            <div className="md:flex hidden w-[35%]  items-center justify-between ">
               {headerItems.map((i) => (
-                <div className=" w-full  flex  items-center ">
+                <div className=" w-full   flex  items-center justify-between ">
                   <div
                     className=" flex cursor-pointer hover:bg-slate-200 p-2 rounded-md items-center "
                     onClick={() => {
@@ -89,7 +87,6 @@ export const Header = () => {
               ))}
             </div>
           </div>
-        </div>
       </div>
     </div>
   );
