@@ -42,11 +42,11 @@ export const Header = () => {
        <Sepet open={open} setOpen={setOpen}  menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
 
       
-      <div className=" m-1 p-2 shadow-md rounded-md">
-        <div className="h-24  space-y-4 ">
+      <div className=" m-1 p-2 shadow-md rounded-md  ">
+        <div className=" space-y-4  ">
           {/* <div className="w-full bg-white  " >sadsad</div> */}
-          <div className="w-full flex items-center p-2 md:justify-evenly justify-between ">
-            <div className="flex items-center cursor-pointer">
+          <div className="w-full flex items-center p-2 md:justify-evenly justify-between  ">
+            <div className="flex items-center cursor-pointer w-auto">
               <div className="h-20 w-20 bg-black flex items-center">
                 <img className="object-cover" src={Logo} alt="Glamouria" />
               </div>

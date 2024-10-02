@@ -2,8 +2,11 @@ import { useState } from "react";
 import { IoMdClose } from "react-icons/io";
 import { PiShoppingCartLight } from "react-icons/pi";
 import Logo from "../assets/images/Logo.jpg";
-import { useSelector } from "react-redux";
-import { Card, CardBody, CardImg, CardText, CardTitle } from "reactstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { motion, AnimatePresence } from "framer-motion";
+import { Plus, Minus } from "lucide-react"
+import { Button, Card, CardBody, CardImg, CardText, CardTitle } from "reactstrap";
+import { ProductActions } from "../store/ProductSlice";
 export const Sepet = ({ 
   open,
   setOpen = () => {},
@@ -11,13 +14,13 @@ export const Sepet = ({
   setMenuOpen=()=>{} 
 }) => {
   const {items,totalPrice}=useSelector(state=>state.product)
- 
+  const dispatch = useDispatch()
   const className = menuOpen ? "right-[0px]" : "-right-[300px]"
   return (
     <>
-    {menuOpen&&<div onClick={()=>{setMenuOpen(false)}} className=" md:hidden w-full h-full fixed bg-black opacity-20"></div>}
+    {menuOpen&&<div onClick={()=>{setMenuOpen(false)}} className=" md:hidden w-full h-full fixed bg-black opacity-40"></div>}
       <div
-        className={`bg-slate-100 h-full w-[300px] fixed top-0   duration-700 ${
+        className={`bg-slate-100 h-full w-[300px] fixed z-50 top-0   duration-700 ${
           open ? "right-[0px]" : "-right-[300px]"
         } `}
       >
@@ -32,11 +35,12 @@ export const Sepet = ({
           </button>
         </div>
 
-        {items?.length?<ShowSepetItem/>:<NoItem/>}
+        {items?.length?<ShowSepetItem items={items} toplamFiyat={totalPrice} dispatch={dispatch} />:<NoItem/>}
       </div>
 
+      {open&&<div onClick={()=>{setOpen(false)}} className="  w-full h-full fixed bg-black opacity-40"></div>}      
       <div className={` md:hidden h-full w-[300px] fixed top-0 duration-700 ${className} bg-slate-200`}>
-        <div className="md:hidden w-full  flex items-center justify-between cursor-pointer p-2 mt-4 border-b-2 border-gray-500">
+        <div className=" w-full  flex items-center justify-between cursor-pointer p-2 mt-4 border-b-2 border-gray-400">
           <div className="flex">
             <div className="h-14 w-14 flex items-center">
               <img className="object-cover  " src={Logo} alt="Glamouria" />
@@ -59,7 +63,7 @@ export const Sepet = ({
           </div>
         </div>
 
-        {items?.length ?<ShowSepetItem/>:<NoItem/>}
+        {items?.length ?<ShowSepetItem items={items} toplamFiyat={totalPrice}/>:<NoItem/>}
       </div>
 
     </>
@@ -67,6 +71,7 @@ export const Sepet = ({
 };
 
 const NoItem = () =>{
+
  return <div className="flex w-full h-full">
   <div className="  flex-col w-full  justify-center  mt-10  ">
     <span className="w-full flex justify-center    ">
@@ -79,24 +84,43 @@ const NoItem = () =>{
 </div>
 };
 
-const ShowSepetItem = () =>{
-  return <div className="mt-2">
-    <Card className="p-2"> 
-      <CardBody className="flex flex-row">
-        <CardImg src="https://picsum.photos/80/80"/>
-         
-        <CardText className="flex flex-col pl-2">
-        <CardTitle>
-          <h1>ssss</h1>
-        </CardTitle>
-        <CardTitle>
-          ssss
-        </CardTitle>
-        <CardTitle>
-          ssss
-        </CardTitle>
-        </CardText>
-      </CardBody>
-    </Card>
-  </div>
+const ShowSepetItem = ({items, toplamFiyat ,dispatch=()=>{}}) =>{
+  console.log(toplamFiyat)
+  return (
+    <div className="w-full h-full p-2 px-4 ">
+      <div className="grid grid-cols-1 gap-4 border-b-2 mt-2 border-slate-800 ">
+        {items?.map((urun) => (
+          <div
+            key={urun.id}
+            className="flex justify-between items-center mb-4 "
+          >
+            <div className="flex items-center">
+              <img
+                src={urun.img}
+                alt={urun.title}
+                width={50}
+                height={50}
+                className="rounded-md mr-2 shadow-sm"
+              />
+              <h1 className="text-base font-medium ">{urun.title}</h1>
+            </div>
+            <div className="flex items-center space-x-2">
+              <button className="bg-white border border-gray-300 rounded-md py-1 px-2 hover:bg-gray-100 active:bg-gray-200" onClick={()=>{dispatch(ProductActions.productMinus(urun.id))}}>
+                <Minus className="h-4 w-4" />
+              </button>
+              <span>{urun.quantity}</span>
+              <button className="bg-white border border-gray-300 rounded-md py-1 px-2 hover:bg-gray-100 active:bg-gray-200" onClick={()=>{dispatch(ProductActions.productAdd(urun))}} >
+                <Plus className="h-4 w-4" />
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="flex justify-between items-center text-lg mt-3 font-semibold">
+            <span>Toplam:</span>
+            <span>{toplamFiyat.toFixed(2)} TL</span>
+      </div>
+          <Button className="w-full mt-4 bg-black text-white p-2 rounded-md hover:opacity-90 ">Siparişi Tamamla</Button>
+    </div>
+  );
 }

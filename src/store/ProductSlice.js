@@ -25,7 +25,24 @@ const ProductSlice = createSlice({
         
             state.totalPrice=toplamFiyat  
           
-        }
+        },
+
+        productMinus (state,action) {
+            const id = action.payload
+            const existingItem = state.items.find(s=>s?.id===id)
+            
+            if(existingItem.quantity>1){
+                existingItem.quantity--
+            }else{
+                state.items = state.items.filter(s=>s.id!==id)
+            }
+            const toplamFiyat = state.items.reduce((toplam, item) => {
+                toplam += (item?.price || 0) * (item?.quantity || 1);
+                return toplam;
+            }, 0);
+        
+            state.totalPrice=toplamFiyat  
+        }   
     }
 
 })
