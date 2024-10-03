@@ -3,9 +3,10 @@ import { IoMdClose } from "react-icons/io";
 import { PiShoppingCartLight } from "react-icons/pi";
 import Logo from "../assets/images/Logo.jpg";
 import { useDispatch, useSelector } from "react-redux";
-import { Plus, Minus } from "lucide-react"
+
 import { Button, Card, CardBody, CardImg, CardText, CardTitle } from "reactstrap";
 import { ProductActions } from "../store/ProductSlice";
+import { FiMinus, FiPlus } from "react-icons/fi";
 export const Sepet = ({ 
   open,
   setOpen = () => {},
@@ -105,11 +106,11 @@ const ShowSepetItem = ({items, toplamFiyat ,dispatch=()=>{}}) =>{
             </div>
             <div className="flex items-center space-x-2">
               <button className="bg-white border border-gray-300 rounded-md py-1 px-2 hover:bg-gray-100 active:bg-gray-200" onClick={()=>{dispatch(ProductActions.productMinus(urun.id))}}>
-                <Minus className="h-4 w-4" />
+                <FiMinus className="h-4 w-4" />
               </button>
               <span>{urun.quantity}</span>
               <button className="bg-white border border-gray-300 rounded-md py-1 px-2 hover:bg-gray-100 active:bg-gray-200" onClick={()=>{dispatch(ProductActions.productAdd(urun))}} >
-                <Plus className="h-4 w-4" />
+                <FiPlus className="h-4 w-4" />
               </button>
             </div>
           </div>

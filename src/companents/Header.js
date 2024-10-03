@@ -5,6 +5,8 @@ import { useState } from "react";
 import { IoMdClose } from "react-icons/io";
 import { PiShoppingCartLight } from "react-icons/pi";
 import {Sepet} from "./Sepetim"
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router";
 
 
 
@@ -12,6 +14,10 @@ export const Header = () => {
   const [open, setOpen] = useState(false);
   const [menuOpen,setMenuOpen] = useState(false)
   const className = menuOpen ? "right-[0px]" : "-right-[300px]"
+  const {items}=useSelector(state=>state?.product)
+  const navigate  = useNavigate();
+
+  console.log(items.length)
   const headerItems = [
     {
       label: "Giriş Yap",
@@ -44,7 +50,7 @@ export const Header = () => {
       
       <div className=" m-1 p-1 shadow-md rounded-md  ">
           <div className="w-full flex items-center p-1.5 md:justify-between justify-evenly  ">
-            <div className="flex items-center cursor-pointer w-auto pl-8">
+            <div className="flex items-center cursor-pointer w-auto  md:pl-8" onClick={()=>{navigate("/")}}>
               <div className="h-12 w-12 bg-black flex items-center">
                 <img className="object-cover" src={Logo} alt="Glamouria" />
               </div>
@@ -74,7 +80,20 @@ export const Header = () => {
             <div className="md:flex hidden w-[35%]  items-center justify-between ">
               {headerItems.map((i) => (
                 <div className=" w-full   flex  items-center justify-between ">
-                  <div
+                
+                  {i.label==="Sepetim"?<div 
+                    className=" flex cursor-pointer hover:bg-slate-200 p-2 rounded-md items-center  relative"
+                    onClick={() => {
+                      i?.onClick?.();
+
+                    }}
+                  >
+                    {i.icon}
+                    {items?.length>0&&<span className="absolute left-6 -top-0 rounded-full bg-red-600 size-[18px]  flex justify-center items-center text-white">
+                        {items.length}
+                    </span>}
+                    <p className="pl-1.5  select-none  ">{i.label}</p>
+                  </div>:<div
                     className=" flex cursor-pointer hover:bg-slate-200 p-2 rounded-md items-center "
                     onClick={() => {
                       i?.onClick?.();
@@ -82,7 +101,7 @@ export const Header = () => {
                   >
                     {i.icon}
                     <p className="pl-1.5  select-none  ">{i.label}</p>
-                  </div>
+                  </div>}
                 </div>
               ))}
             </div>
